@@ -1,0 +1,5 @@
+---
+- name: caddy reload
+  command: caddy reload
+  args:
+    chdir: /etc/caddy/

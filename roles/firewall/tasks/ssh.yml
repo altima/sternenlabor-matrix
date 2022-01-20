@@ -1,0 +1,6 @@
+---
+- name: Limit SSH
+  ufw:
+    rule: limit
+    port: ssh
+    proto: tcp

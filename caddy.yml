@@ -1,0 +1,8 @@
+---
+- name: CaddyV2
+  hosts: caddy
+  roles:
+  - role: nvjacobo.caddy
+    tags:
+    - skip_ansible_lint
+  - role: caddy

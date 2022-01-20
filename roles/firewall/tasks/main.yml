@@ -1,0 +1,11 @@
+---
+# install
+- import_tasks: install.yml
+- import_tasks: logging.yml
+
+# config
+- import_tasks: ssh.yml
+- import_tasks: http.yml
+
+# enable ufw
+- import_tasks: enable.yml

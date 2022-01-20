@@ -1,0 +1,9 @@
+---
+- name: firewall tcp add
+  ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: tcp
+  loop:
+  - 80
+  - 443

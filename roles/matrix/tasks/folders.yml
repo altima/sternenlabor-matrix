@@ -1,0 +1,14 @@
+---
+- name: Folders
+  file:
+    path: "{{ item }}"
+    state: directory
+    group: docker
+    mode: '0775'
+  loop:
+  - "/opt/matrix/data"
+  - "/opt/matrix/pgdata"
+  - "/opt/matrix/coturn"
+  - "/opt/matrix/nginx"
+  - "/opt/matrix/nginx/www"
+  - "/opt/matrix/nginx/www/.well-known/matrix"

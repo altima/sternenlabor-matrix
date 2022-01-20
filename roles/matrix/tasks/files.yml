@@ -1,0 +1,11 @@
+---
+- name: files copies
+  copy:
+    src: "{{ item.from }}"
+    dest: "{{ item.to }}"
+    mode: '0744'
+  loop:
+  - { from: './files/matrix.sternenlabor.de.log.config', to: '/opt/matrix/data/matrix.sternenlabor.de.log.config' }
+  - { from: './files/matrix.sternenlabor.de.signing.key', to: '/opt/matrix/data/matrix.sternenlabor.de.signing.key' }
+  - { from: './files/homeserver.yaml', to: '/opt/matrix/data/homeserver.yaml' }
+  - { from: './files/element-config.json', to: '/opt/matrix/element-config.json' }

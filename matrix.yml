@@ -1,0 +1,4 @@
+- name: Matrix
+  hosts: matrix
+  roles:
+  - role: matrix

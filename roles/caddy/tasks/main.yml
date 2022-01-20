@@ -1,0 +1,6 @@
+---
+- name: Caddyfile
+  template:
+    src: "Caddyfile.{{ ansible_host }}.j2"
+    dest: /etc/caddy/Caddyfile
+  notify: caddy reload

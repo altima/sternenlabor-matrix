@@ -1,0 +1,14 @@
+---
+- name: install logrotate dependencies
+  apt:
+    pkg:
+    - logrotate
+    state: present
+
+- name: install default logrotate config
+  copy:
+    src: rsyslog
+    dest: /etc/logrotate.d/rsyslog
+
+- name: Flush Handler
+  meta: flush_handlers

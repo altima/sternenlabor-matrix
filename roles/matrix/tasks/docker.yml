@@ -1,0 +1,46 @@
+---
+- name: network
+  community.docker.docker_network:
+    name: matrix_net
+    ipam_config:
+      - subnet: 10.10.10.0/24
+        gateway: 10.10.10.1
+
+- name: synapse
+  docker_compose:
+    project_name: synapse
+    definition:
+      version: '3'
+      services:
+        # Postgres
+        postgres:
+          image: postgres
+          volumes:
+          - /opt/matrix/pgdata:/var/lib/postgresql/data
+          environment:
+          - POSTGRES_PASSWORD=synapse
+          - POSTGRES_USER=synapse
+          - POSTGRES_INITDB_ARGS=--encoding="UTF8" --lc-collate="C" --lc-ctype="C"
+          networks:
+            default:
+              ipv4_address: 10.10.10.2
+        element:
+          image: vectorim/element-web:latest
+          restart: unless-stopped
+          volumes:
+          - /opt/matrix/element-config.json:/app/config.json
+          networks:
+            default:
+              ipv4_address: 10.10.10.3
+        synapse:
+          image: matrixdotorg/synapse:latest
+          restart: unless-stopped
+          networks:
+            default:
+              ipv4_address: 10.10.10.4
+          volumes:
+          - /opt/matrix/data:/data
+      networks:
+        default:
+          external:
+            name: matrix_net

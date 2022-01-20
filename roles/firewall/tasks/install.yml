@@ -1,0 +1,9 @@
+---
+- name: Install ufw dependencies
+  apt:
+    pkg:
+    - ufw
+    state: present
+
+- name: Flush Handler
+  meta: flush_handlers

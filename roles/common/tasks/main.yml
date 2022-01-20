@@ -1,0 +1,12 @@
+---
+# set users
+- import_tasks: users.yml
+  tags:
+  - skip_ansible_lint
+
+# default software
+- import_tasks: software.yml
+- import_tasks: upgrade.yml
+
+- name: Flush Handlers
+  meta: flush_handlers

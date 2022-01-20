@@ -1,0 +1,23 @@
+---
+- name: Install apt dependencies
+  apt:
+    pkg:
+    - apt-transport-https
+    state: present
+  notify: update apt-cache
+
+- name: Flush Handlers
+  meta: flush_handlers
+
+- name: install common packages
+  apt:
+    pkg:
+    - htop
+    - ca-certificates
+    - wget
+    - curl
+    - software-properties-common
+    - gnupg2
+    - python3-pip
+    state: present
+  notify: update apt-cache

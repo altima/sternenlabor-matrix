@@ -1,0 +1,15 @@
+---
+- name: Default
+  hosts: all
+  roles:
+  - role: common
+  - role: firewall
+  - role: logrotate
+  - role: geerlingguy.docker
+    tags:
+    - skip_ansible_lint
+
+- name: Watchtower
+  hosts: watchtower
+  roles:
+  - role: watchtower
